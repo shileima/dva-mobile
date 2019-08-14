@@ -1,26 +1,36 @@
-import React, {useEffect,useState} from 'react';
+import React from 'react';
+import { connect } from 'dva';
 import LoginShow from '../components/LoginShow';
-import {query} from '../services/users';
 
 const Login = (props) => {
+
+  if(localStorage.getItem('token') !== null){
+    console.log('登录成功！')
+    console.log(props.history.push('/'))
+  }
   console.log(props)
-  const [orders, setorders] = useState([])
+  if(props.props.user && props.props.user.data) {
+    localStorage.setItem('token',props.props.user.data.token)
+  }
+  //const [orders, setorders] = useState([])
   
   // useEffect(() => {
-  //   query().then(res=>{
-  //     console.log(res.data)
-  //     setorders(orders.push(...res.data.data))
-  //   })
     
   //   return () => {};
   // },[])
+
+  const handleSubmite = (options)=>{
+    props.dispatch({'type':'user/fetchLogin',payload:options})
+  }
+
   return (
     <div>
-      <LoginShow />
+      <LoginShow onSubmite={(options)=>handleSubmite(options)} />
     </div>
   );
 };
 
-// export default Products;
-export default Login;
+export default connect(props => ({
+  props
+}))(Login);
 

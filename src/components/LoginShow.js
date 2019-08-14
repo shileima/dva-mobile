@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
+import {query} from '../services/login';
+
 
 /* const users2 = [
   {"id":10,"name":"jone"},
@@ -11,15 +13,44 @@ const UserList = ({users}) => users.map(user=>(
   </List>
 )) */
 
-const OrderList = () => {
-  return (
+const LoginShow = (props) => {
+
+  useEffect(() => {
+    
+
+    return () => {
+      // Clean up the subscription
+    };
+  },[]);
+
+  const handleSubmite = () => {
+    let options = {
+      "method":"POST",
+      "headers":{"Content-Type":"application/json"},
+      "body":JSON.stringify({
+        "username":"loading123",
+        "password":"861124"
+      })
+    };
+    return props.onSubmite(options)
+  }
+  return (<div>
+    
     <h1>Login</h1>
+    <div>
+      <div><input type="text" name="username" /></div>
+      <hr></hr>
+      <div><input type="text" name="password" /></div>
+      <button onClick={handleSubmite}>登录</button>
+    </div>
+    
+    </div>
   )
 }
 
-OrderList.propTypes = {
+LoginShow.propTypes = {
   //onDelete: PropTypes.func.isRequired,
   //users: PropTypes.array.isRequired,
 };
 
-export default OrderList;
+export default LoginShow;
