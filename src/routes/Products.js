@@ -5,8 +5,7 @@ import ProductList from '../components/ProductList';
 
 let page = 1;
 const Products = (props) => {
-
-  console.log(props)
+  //console.log(props)
 
   useEffect(() => {
     if(props.location.pathname === '/'){

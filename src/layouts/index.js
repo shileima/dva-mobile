@@ -16,7 +16,7 @@ const Layout = (props) => {
                 <Link to="/course/1336">课程详情</Link>
                 </li>
                 <li>
-                <Link to="/my/orders">我的订单</Link>
+                <Link to="/login">登录</Link>
                 </li> 
                 </ul>
             </nav>

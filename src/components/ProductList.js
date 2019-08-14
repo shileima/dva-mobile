@@ -7,12 +7,8 @@ import moment from 'moment';
 
 const ProductList = ({products,location,loading}) => {
   const [productlist,setproductlist] = useState([]);
-  console.log(loading)
 
   useEffect(() => {
-    console.log('useEffect')    
-    console.log('products:', products)
-    console.log('productlist:', productlist)
     if(products !== productlist){
       setproductlist([...productlist,...products])
     }
@@ -23,7 +19,6 @@ const ProductList = ({products,location,loading}) => {
   },[products]);
 
   const changePicUrl= (str)=> str ? 'http://cdn.chinahadoop.cn/files/' + str.slice(9) : 'http://cdn.chinahadoop.cn/files/default/2015/08-08/104441957e14483026.png'
-  console.log(productlist)
   const list = productlist.map(product=>(
     <Link to={"/course/" + product.id} key={product.id} >
       <li list-item={product.id}>

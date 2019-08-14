@@ -1,4 +1,11 @@
 {
     "editor.formatOnType": false,
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
+    "search.exclude": {
+        "**/bower_components": false,
+        "**/node_modules": false
+    },
+    "files.watcherExclude": {
+        "**/node_modules/*/**": false
+    }
 }
