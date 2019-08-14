@@ -1,0 +1,20 @@
+{
+    "extraBabelPlugins": [
+        ["import", { "libraryName": "antd-mobile", "libraryDirectory": "es", "style": "css" }]
+    ],
+    "proxy": {
+        "/api": {
+            "target": "http://localhost:3000",
+            "changeOrigin": true
+        },
+        "/ajax": {
+            "target": "http://www.chinahadoop.cn",
+            "changeOrigin": true
+        },
+        "/mapi_v2": {
+            "target": "http://www.chinahadoop.cn",
+            "changeOrigin": true
+        }
+        
+    }
+}
