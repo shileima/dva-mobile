@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import { Card, WhiteSpace } from 'antd-mobile';
 import Spinner from './Spinner';
 

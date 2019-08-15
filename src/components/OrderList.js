@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { List } from 'antd-mobile';
-const Item = List.Item;
+//import PropTypes from 'prop-types';
+//import { List } from 'antd-mobile';
+//const Item = List.Item;
 /* const users2 = [
   {"id":10,"name":"jone"},
   {"id":11,"name":"wrer"},

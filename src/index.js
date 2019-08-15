@@ -19,8 +19,8 @@ const app = dva({
         console.log('onEffect')
     }, */
     onStateChange:(state)=>{
-        console.log(state)
-        console.log(state.products.list)
+        //console.log(state)
+        //console.log(state.products.list)
     },
     /* onAction:(action)=>{
         console.log('onAction')
@@ -40,6 +40,7 @@ app.model(require('./models/products').default);
 /* app.model(require('./models/count').default);
 app.model(require('./models/users').default); */
 app.model(require('./models/login').default);
+app.model(require('./models/mycourses').default);
 
 // 4. Router
 app.router(require('./router').default);

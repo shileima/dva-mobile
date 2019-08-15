@@ -1,6 +1,6 @@
-import { query } from '../services/products';
+import { query } from '../services/mycourses';
 export default {
-  namespace: 'products',
+  namespace: 'mycourses',
   state: {
     list:[]
   },
@@ -20,7 +20,7 @@ export default {
 
     },
     *firstFetch({ payload }, { put, call, select }) {
-      const list = yield query(1).then(res => {
+      const list = yield query().then(res => {
         return res.data
       })
       yield put({ type: 'fetchHome' , payload: list});
@@ -29,14 +29,14 @@ export default {
   reducers: {
     'fetchHome'(state, { payload: list }) {
       console.log('fetchHome')
-      if(localStorage.getItem('firstPage')){
+      if(localStorage.getItem('firstMycourses')){
         console.log('get localStorage')
-        list = JSON.parse(localStorage.getItem('firstPage'))
+        list = JSON.parse(localStorage.getItem('firstMycourses'))
         console.log({list})
         return {list,...{isHome:true}};
       }else{
         console.log('set localStorage')
-        localStorage.setItem("firstPage",JSON.stringify(list))
+        localStorage.setItem("firstMycourses",JSON.stringify(list))
         console.log({...state,list})
         return {...state,list,...{isHome:true}};
       }

@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import PropTypes from 'prop-types';
-import {query} from '../services/login';
+import React from 'react';
+/* import PropTypes from 'prop-types';
+import {query} from '../services/login'; */
 
 
 /* const users2 = [
@@ -15,13 +15,13 @@ const UserList = ({users}) => users.map(user=>(
 
 const LoginShow = (props) => {
 
-  useEffect(() => {
+  /* useEffect(() => {
     
 
     return () => {
       // Clean up the subscription
     };
-  },[]);
+  },[]); */
 
   const handleSubmite = () => {
     let options = {

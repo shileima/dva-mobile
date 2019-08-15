@@ -5,7 +5,7 @@ import {Link} from 'dva/router';
 import { Card, WhiteSpace } from 'antd-mobile';
 import moment from 'moment';
 
-const ProductList = ({products,location,loading,isHome}) => {
+const MyCourses = ({products,location,loading,isHome}) => {
   const [productlist,setproductlist] = useState([]);
   console.log(productlist)
   console.log('isHome:', isHome)
@@ -45,9 +45,9 @@ const ProductList = ({products,location,loading,isHome}) => {
     </div>
   )
 }
-ProductList.propTypes = {
+MyCourses.propTypes = {
   //onDelete: PropTypes.func.isRequired,
   //products: PropTypes.array.isRequired,
 };
 
-export default ProductList;
+export default MyCourses;

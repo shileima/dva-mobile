@@ -9,7 +9,7 @@ const Layout = (props) => {
             <nav>
             <ul>
                 <li>
-                <a href="/">首页</a>
+                <Link to="/">首页</Link>
                 </li>
                 <li>
                 {/* <a href="/course/1336">课程详情</a> */}

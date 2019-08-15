@@ -1,10 +1,10 @@
-import React, {useEffect,useState} from 'react';
+import React from 'react';
 import OrderList from '../components/OrderList';
-import {query} from '../services/users';
+//import {query} from '../services/users';
 
 const Orders = (props) => {
   console.log(props)
-  const [orders, setorders] = useState([])
+  //const [orders, setorders] = useState([])
   
   // useEffect(() => {
   //   query().then(res=>{
