@@ -15,7 +15,6 @@ export default {
       const list = yield query(payload).then(res => {
         return res.data
       })
-            
       yield put({ type: 'fetch' , payload: list});
 
     },
@@ -28,13 +27,18 @@ export default {
   },
   reducers: {
     'fetchHome'(state, { payload: list }) {
-      console.log('fetchHome')
-      if(localStorage.getItem('firstMycourses')){
+      let firstMycourses = localStorage.getItem('firstMycourses');
+      let mycoursesArray;
+      if(firstMycourses) {
+        mycoursesArray = JSON.parse(firstMycourses).data;
+      } 
+      if(Array.isArray(mycoursesArray) && mycoursesArray.length >= 0){
         console.log('get localStorage')
         list = JSON.parse(localStorage.getItem('firstMycourses'))
         console.log({list})
         return {list,...{isHome:true}};
       }else{
+        if(firstMycourses) localStorage.removeItem('firstMycourses')
         console.log('set localStorage')
         localStorage.setItem("firstMycourses",JSON.stringify(list))
         console.log({...state,list})
