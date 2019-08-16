@@ -7,6 +7,8 @@ let page = 1;
 const Mycourses = (props) => {
   console.log(props)
   let isHome = props.products.mycourses.isHome || false;
+  let host = props.products.mycourses.host || "";
+  let products = props.products.mycourses.list && props.products.mycourses.list.data || [];
   page = isHome ? 1 : page + 1;
   useEffect(() => {
     if(props.location.pathname === '/mycourses'){
@@ -30,12 +32,13 @@ const Mycourses = (props) => {
   return (
     <div ref={productListRef}>
       <MyCourses 
-        products={props.products.mycourses.list.data || []}
+        products={products}
         history ={props.history}
         location ={props.location}
         match ={props.match}
         loading={props.products.loading.global}
         isHome={isHome}
+        host={host}
       />
     </div>
   );

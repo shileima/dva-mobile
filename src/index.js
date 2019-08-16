@@ -13,6 +13,10 @@ const app = dva({
             token: "",
             list:[]
         },
+        mycourses: {
+            host:"http://www.chinahadoop.cn",
+            list:[]
+        }
         //products: []
     },
     /* onEffect:()=>{

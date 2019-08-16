@@ -19,15 +19,21 @@ export default {
 
     },
     *firstFetch({ payload }, { put, call, select }) {
+      let dataIds = [];
       const res = yield query().then(res => {
-        console.log(res)
         return res
       })
-      let dataIds = [];
-      yield res.data.data.forEach(course => {
-        dataIds.push(course.id)
-        return dataIds;
-      });
+      console.log(res)
+      if(res.err || res.data.error && res.data.error.name === 'not_login'){
+        console.log('未登录');
+        window.location.href = "http://l.chinahadoop.cn/login?goto=http://l.chinahadoop.cn:8000/mycourses";
+        
+      }else{
+        yield res.data.data.forEach(course => {
+          dataIds.push(course.id)
+          return dataIds;
+        });
+      }
       
       yield put({ type: 'fetchHome' , payload: {...res.data,dataIds}});
     },
@@ -49,14 +55,14 @@ export default {
       if(list.dataIds[0] === mydataIdsArray[0] && Array.isArray(mycoursesArray) && mycoursesArray.length >= 0){
         console.log('get localStorage')
         list = JSON.parse(localStorage.getItem('firstMycourses'))
-        console.log({list})
-        return {list,...{isHome:true}};
+        console.log({list,...{isHome:true,host:state.host}})
+        return {list,...{isHome:true,host:state.host}};
       }else{
         if(firstMycourses) localStorage.removeItem('firstMycourses')
         console.log('set localStorage')
         localStorage.setItem("firstMycourses",JSON.stringify(list))
-        console.log({...state,list})
-        return {...state,list,...{isHome:true}};
+        console.log({...state,list,host:state.host})
+        return {...state,list,...{isHome:true,host:state.host}};
       }
     },
     'fetch'(state, { payload: list }) {
