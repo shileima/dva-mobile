@@ -1,6 +1,6 @@
-import { query } from '../services/mycourses';
+import { query } from '../services/products';
 export default {
-  namespace: 'mycourses',
+  namespace: 'products',
   state: {
     list:[]
   },
@@ -15,11 +15,12 @@ export default {
       const list = yield query(payload).then(res => {
         return res.data
       })
+            
       yield put({ type: 'fetch' , payload: list});
 
     },
     *firstFetch({ payload }, { put, call, select }) {
-      const list = yield query().then(res => {
+      const list = yield query(1).then(res => {
         return res.data
       })
       yield put({ type: 'fetchHome' , payload: list});
@@ -27,20 +28,15 @@ export default {
   },
   reducers: {
     'fetchHome'(state, { payload: list }) {
-      let firstMycourses = localStorage.getItem('firstMycourses');
-      let mycoursesArray;
-      if(firstMycourses) {
-        mycoursesArray = JSON.parse(firstMycourses).data;
-      } 
-      if(Array.isArray(mycoursesArray) && mycoursesArray.length >= 0){
+      console.log('fetchHome')
+      if(localStorage.getItem('firstPage')){
         console.log('get localStorage')
-        list = JSON.parse(localStorage.getItem('firstMycourses'))
+        list = JSON.parse(localStorage.getItem('firstPage'))
         console.log({list})
         return {list,...{isHome:true}};
       }else{
-        if(firstMycourses) localStorage.removeItem('firstMycourses')
         console.log('set localStorage')
-        localStorage.setItem("firstMycourses",JSON.stringify(list))
+        localStorage.setItem("firstPage",JSON.stringify(list))
         console.log({...state,list})
         return {...state,list,...{isHome:true}};
       }

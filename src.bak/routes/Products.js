@@ -1,15 +1,15 @@
 import React, { useRef, useEffect } from 'react';
 import { connect } from 'dva';
-import MyCourses from '../components/MyCourses';
+import ProductList from '../components/ProductList';
 //import BScroll from 'better-scroll';
 
 let page = 1;
-const Mycourses = (props) => {
+const Products = (props) => {
   console.log(props)
 
   useEffect(() => {
-    if(props.location.pathname === '/mycourses'){
-      props.dispatch({type:'mycourses/firstFetch', payload:{}})
+    if(props.location.pathname === '/'){
+      props.dispatch({type:'products/firstFetch', payload:{page:1}})
       //return false;
     }
   }, []);
@@ -28,13 +28,13 @@ const Mycourses = (props) => {
   }
   return (
     <div ref={productListRef}>
-      <MyCourses 
-        products={props.products.mycourses.list.data || []}
+      <ProductList 
+        products={props.products.products.list}
         history ={props.history}
         location ={props.location}
         match ={props.match}
         loading={props.products.loading.global}
-        isHome={props.products.mycourses.isHome || false}
+        isHome={props.products.products.isHome}
       />
     </div>
   );
@@ -44,5 +44,5 @@ const Mycourses = (props) => {
 
 export default connect(props => ({
   products:{...props},
-}))(Mycourses);
+}))(Products);
 

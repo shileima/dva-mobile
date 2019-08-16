@@ -7,11 +7,9 @@ import moment from 'moment';
 
 const MyCourses = ({products,location,loading,isHome}) => {
   const [productlist,setproductlist] = useState([]);
-  console.log('products1:', products)
+  console.log(productlist)
   console.log('isHome:', isHome)
   useEffect(() => {
-    console.log('mycourses useEffect')
-    console.log('products2', products)
     if(products !== productlist && !isHome){
       setproductlist([...productlist,...products])
     }else{
@@ -24,13 +22,12 @@ const MyCourses = ({products,location,loading,isHome}) => {
     };
   },[products]);
 
-  //const changePicUrl= (str)=> str ? 'http://cdn.chinahadoop.cn/files/' + str.slice(9) : 'http://cdn.chinahadoop.cn/files/default/2015/08-08/104441957e14483026.png'
-  console.log('productlist2:', productlist)
+  const changePicUrl= (str)=> str ? 'http://cdn.chinahadoop.cn/files/' + str.slice(9) : 'http://cdn.chinahadoop.cn/files/default/2015/08-08/104441957e14483026.png'
   const list = productlist.map(product=>(
     <Link to={"/course/" + product.id} key={product.id} >
       <li list-item={product.id}>
       <Card full>
-        <img style={{height:'180px'}} src={'https://cdn' + product.mobileLargePicture.slice(8)} alt={product.title} />
+        <img style={{height:'180px'}} src={changePicUrl(product.mobileLargePicture)} alt={product.title} />
         <Card.Body>
           <div>{product.title}</div>
         </Card.Body>

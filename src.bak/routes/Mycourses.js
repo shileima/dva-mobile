@@ -29,12 +29,12 @@ const Mycourses = (props) => {
   return (
     <div ref={productListRef}>
       <MyCourses 
-        products={props.products.mycourses.list.data || []}
+        products={props.products.products.list}
         history ={props.history}
         location ={props.location}
         match ={props.match}
         loading={props.products.loading.global}
-        isHome={props.products.mycourses.isHome || false}
+        isHome={props.products.products.isHome}
       />
     </div>
   );
