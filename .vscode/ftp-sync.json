@@ -1,24 +1,20 @@
 {
-    "remotePath": "/var/www/mobile",
+    "remotePath": "/var/www/dva-mobile",
     "host": "120.27.34.79",
     "username": "root",
     "password": "yytt861124",
     "port": 22,
     "secure": false,
     "protocol": "sftp",
-    "uploadOnSave": false,
+    "uploadOnSave": true,
     "passive": false,
     "debug": false,
     "privateKeyPath": null,
     "passphrase": null,
     "agent": null,
-    "allow": [],
+    "allow": [
+    ],
     "ignore": [
-        "\\.vscode",
-        "\\.git",
-        "\\.DS_Store",
-        "\\node_modules",
-        "node_modules"
     ],
     "generatedFiles": {
         "extensionsToInclude": [

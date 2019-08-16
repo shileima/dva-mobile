@@ -6,7 +6,8 @@ import MyCourses from '../components/MyCourses';
 let page = 1;
 const Mycourses = (props) => {
   console.log(props)
-
+  let isHome = props.products.mycourses.isHome || false;
+  page = isHome ? 1 : page + 1;
   useEffect(() => {
     if(props.location.pathname === '/mycourses'){
       props.dispatch({type:'mycourses/firstFetch', payload:{}})
@@ -23,7 +24,7 @@ const Mycourses = (props) => {
   
     if ($scrollHeight - $scrollTop - $windowHeight === 0) {
       page = page + 1;
-      props.dispatch({type:'products/scrollFetch', payload:page})
+      props.dispatch({type:'mycourses/scrollFetch', payload:{limit:5,start:(page-1)*5}})
     }
   }
   return (
@@ -34,7 +35,7 @@ const Mycourses = (props) => {
         location ={props.location}
         match ={props.match}
         loading={props.products.loading.global}
-        isHome={props.products.mycourses.isHome || false}
+        isHome={isHome}
       />
     </div>
   );

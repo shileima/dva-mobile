@@ -12,7 +12,7 @@
             "changeOrigin": true
         },
         "/mapi_v2": {
-            "target": "http://www.chinahadoop.cn",
+            "target": "http://l.chinahadoop.cn",
             "changeOrigin": true
         }
         
